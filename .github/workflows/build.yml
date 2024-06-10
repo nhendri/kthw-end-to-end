@@ -13,6 +13,9 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v2
             - name: Run Script
+              env: 
+                AWS_ACCESS_KEY: ${{ secrets.aws_access_key }}
+                AWS_SECRET_KEY: ${{ secrets.aws_secret_key }}
               run: |
                 chmod +x hi.sh
                 ./hi.sh
