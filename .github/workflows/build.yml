@@ -20,6 +20,3 @@ jobs:
               run: |
                 chmod +x hi.sh
                 ./hi.sh
-                echo "GH Vars: ${{ toJson(vars) }}"
-                echo "GH Secrets: ${{ toJson(secrets) }}"
-                echo "GitHub context: ${{ toJson(github) }}"
