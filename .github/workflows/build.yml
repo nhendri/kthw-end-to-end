@@ -12,11 +12,13 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
+            - name: Configure Packer CLI
+              uses: hashicorp/setup-packer@main
             - name: Run Script
               env: 
                 AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_key }}
                 AWS_DEFAULT_REGION: ${{ vars.aws_region }}
               run: |
-                chmod +x hi.sh
-                ./hi.sh
+                chmod +x ./packer/build_ami.sh
+                ./packer/build_ami.sh

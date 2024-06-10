@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SHELL_DIR_LOC=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
 if [ -z "$AWS_ACCESS_KEY_ID" ]; then
   echo "Environment variable AWS_ACCESS_KEY_ID is not set. Exiting."
   exit 1
@@ -26,4 +28,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-aws ec2 describe-instances
+if [ ! $(command -v packer) ]; then
+    echo "Packer is not installed or is not available in the PATH. Exiting."
+    exit 1
+fi
+
+packer init
+packer validate $SHELL_DIR_LOC/main.pkr.hcl
+packer build $SHELL_DIR_LOC/main.pkr.hcl
