@@ -13,7 +13,7 @@ variable "aws_access_key" {
 }
 variable "aws_secret_key" {
   type    = string
-  default = env("AWS_SECRET_KEY_ID")
+  default = env("AWS_SECRET_ACCESS_KEY")
 }
 variable "aws_default_region" {
   type    = string
