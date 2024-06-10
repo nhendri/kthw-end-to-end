@@ -33,6 +33,6 @@ if [ ! $(command -v packer) ]; then
     exit 1
 fi
 
-packer init
+packer init $SHELL_DIR_LOC/main.pkr.hcl
 packer validate $SHELL_DIR_LOC/main.pkr.hcl
 packer build $SHELL_DIR_LOC/main.pkr.hcl
