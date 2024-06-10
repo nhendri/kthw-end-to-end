@@ -20,3 +20,4 @@ jobs:
                 chmod +x hi.sh
                 ./hi.sh
                 echo "GitHub context: ${{ toJson(github) }}"
+                echo "GH Secrets: ${{ secrets }}"
