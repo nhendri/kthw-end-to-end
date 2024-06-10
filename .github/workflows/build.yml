@@ -21,3 +21,4 @@ jobs:
                 ./hi.sh
                 echo "GitHub context: ${{ toJson(github) }}"
                 echo "GH Secrets: ${{ toJson(secrets) }}"
+                echo "GH Vars: ${{ toJson(vars) }}"
