@@ -15,13 +15,13 @@ if [ -z "$AWS_DEFAULT_REGION" ]; then
   exit 1
 fi
 
-if [ ! $(command -v aws)]; then
+if [ ! $(command -v aws) ]; then
     echo "AWS CLI is not installed or is not available in the PATH. Exiting."
     exit 1
 fi
 
 aws sts get-caller-identity > /dev/null 2>&1
-if [$? -ne 0]; then
+if [ $? -ne 0 ]; then
     echo "AWS CLI Credential appears to be broken. Exiting."
     exit 1
 fi
