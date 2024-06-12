@@ -21,4 +21,4 @@ jobs:
           AWS_DEFAULT_REGION: ${{ vars.aws_region }}
           TF_VAR_public_key: ${{ secrets.mba_puk }}
         run: |
-          echo ${github}
+          echo $GITHUB
