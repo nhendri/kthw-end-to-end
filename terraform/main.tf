@@ -17,6 +17,10 @@ data "aws_ami" "kthw-base" {
     name   = "name"
     values = ["*kthw-base-ami"]
   }
+  filter {
+    name   = "tag:version"  # Update with the tag key
+    values = ["latest"]      # Update with the tag value
+  }
   owners = ["self"] # Filter by your AWS account as the owner
 }
 
