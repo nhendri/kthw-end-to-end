@@ -21,4 +21,5 @@ jobs:
           AWS_DEFAULT_REGION: ${{ vars.aws_region }}
           TF_VAR_public_key: ${{ secrets.mba_puk }}
         run: |
-          echo $github
+            echo "::set-output name=context::${GITHUB_EVENT_PATH}"
+            cat $GITHUB_EVENT_PATH
