@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Make A Version?
+        run: |
+          echo "kthw_thing:${{ github.run_number }}.${{ github.run_attempt }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
