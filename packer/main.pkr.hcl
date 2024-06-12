@@ -21,13 +21,15 @@ variable "aws_default_region" {
 }
 
 source "amazon-ebs" "kthw-source" {
-  access_key    = "${ var.aws_access_key }"
-  secret_key    = "${ var.aws_secret_key }"
-  region        = "${ var.aws_default_region }"
-  ami_name      = "kthw-base-ami"
-  source_ami    = "ami-0f58aa386a2280f35"
-  instance_type = "t4g.small"
-  ssh_username  = "admin"
+  access_key            = "${ var.aws_access_key }"
+  secret_key            = "${ var.aws_secret_key }"
+  region                = "${ var.aws_default_region }"
+  ami_name              = "kthw-base-ami"
+  force_deregister      = true
+  force_delete_snapshot = true
+  source_ami            = "ami-0f58aa386a2280f35"
+  instance_type         = "t4g.small"
+  ssh_username          = "admin"
 }
 
 build {
