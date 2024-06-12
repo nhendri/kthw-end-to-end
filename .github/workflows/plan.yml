@@ -1,25 +1,25 @@
 name: TF Plan Workflow
 
 on:
-    #push:
-    #    branches:
-    #        - main
-    workflow_dispatch:
+  #push:
+  #  branches:
+  #    - main
+  workflow_dispatch:
 
 jobs:
-    run-script:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v2
-            - name: Configure Packer CLI
-              uses: hashicorp/setup-terraform@v3
-            - name: Run Script
-              env: 
-                AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key }}
-                AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_key }}
-                AWS_DEFAULT_REGION: ${{ vars.aws_region }}
-                TF_VAR_public_key: ${{ secrets.mba_puk }}
-              run: |
-                chmod +x ./scripts/plan_and_apply.sh
-                ./scripts/plan_and_apply.sh
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Configure Packer CLI
+        uses: hashicorp/setup-terraform@v3
+      - name: Run Script
+        env: 
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_key }}
+          AWS_DEFAULT_REGION: ${{ vars.aws_region }}
+          TF_VAR_public_key: ${{ secrets.mba_puk }}
+        run: |
+          chmod +x ./scripts/plan_and_apply.sh
+          ./scripts/plan_and_apply.sh
