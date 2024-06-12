@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Make A Version?
         run: |
-          echo "kthw_thing:${{ github.run_number }}.${{ github.run_attempt }}"
+          echo "kthw_thing-${{ github.run_number }}.${{ github.run_attempt }}.ami"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
