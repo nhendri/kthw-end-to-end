@@ -25,6 +25,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_key }}
           AWS_DEFAULT_REGION: ${{ vars.aws_region }}
           TF_VAR_public_key: ${{ secrets.mba_puk }}
+          PKR_BUILD_VERSION: "${{ github.run_number }}.${{ github.run_attempt }}"
         run: |
           chmod +x ./scripts/build.sh
           ./scripts/build.sh

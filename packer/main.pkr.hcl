@@ -38,7 +38,7 @@ source "amazon-ebs" "kthw-source" {
   tags                  = {
     ami_name            = "kthw-base-ami"
     version             = "latest"
-    build_version       = ${ var.build_version }
+    build_version       = "${ var.build_version }"
   }
 }
 
