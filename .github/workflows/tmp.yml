@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-      paths:
-        - .github/workflows/tmp.yml
+    paths:
+    - .github/workflows/tmp.yml
   workflow_dispatch:
 
 jobs:
