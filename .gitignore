@@ -1,4 +1,7 @@
 local_scripts
-terraform/.terraform
-terraform/.terraform.lock.hcl
+provision/kthw/.terraform
+provision/kthw/.terraform.lock.hcl
+provision/tf_backend/.terraform
+provision/tf_backend/.terraform.lock.hcl
+provision/tf_backend/terraform.tfstate*
 .env*

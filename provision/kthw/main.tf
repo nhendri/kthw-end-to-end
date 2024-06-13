@@ -1,27 +1,18 @@
 provider "aws" {}
 
 terraform {
-    backend "local" {
-        path = "./.terraform/terraform.tfstate"
-    }
+  backend "s3" {
+    bucket         = "kthw-tf-backends"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "kthw-tf-locktable"
+    encrypt        = true
+  }
 }
 
 variable public_key {
   description = "shell environment public key"
   type        = string
-}
-
-data "aws_ami" "kthw-base" {
-  most_recent = true
-  filter {
-    name   = "name"
-    values = ["*kthw-base-ami"]
-  }
-  filter {
-    name   = "tag:version"  # Update with the tag key
-    values = ["latest"]      # Update with the tag value
-  }
-  owners = ["self"] # Filter by your AWS account as the owner
 }
 
 locals {
@@ -36,6 +27,19 @@ locals {
         }
     }
     kthw_ssh_key_name = "kthw_laptop_keypair_01"
+}
+
+data "aws_ami" "kthw-base" {
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["*kthw-base-ami"]
+  }
+  filter {
+    name   = "tag:version"  # Update with the tag key
+    values = ["latest"]      # Update with the tag value
+  }
+  owners = ["self"] # Filter by your AWS account as the owner
 }
 
 resource "aws_security_group" "sg_01" {
