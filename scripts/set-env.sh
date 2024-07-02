@@ -5,7 +5,7 @@ SHELL_DIR_LOC=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 ENV_FILE=.env-local
 if [ -f $SHELL_DIR_LOC/../$ENV_FILE ]; then
     while IFS='=' read -r NAME VALUE; do
-    if [[ -v $NAME ]]; then
+    if [ -n "${!NAME}" ]; then
         printf "$NAME has been set\n"
         else
             printf "Setting $NAME from $ENV_FILE\n"

@@ -1,0 +1,21 @@
+name: Test GHA
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/gha.yml
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Test Action?
+        uses: nhendri/test-docker-action
+        with:
+            var01: "holy"
+            var02: "wah"

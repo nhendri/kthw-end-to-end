@@ -3,11 +3,13 @@ provider "aws" {}
 variable s3_backend_name{
   description = "shell environment variable for s3 backend"
   type        = string
+  default     = "kthw-tf-backends"
 }
 
 variable dynamodb_backend_lock_name{
   description = "shell environment variable for dynamodb lock table"
   type        = string
+  default     = "kthw-tf-locktable"
 }
 
 locals {
