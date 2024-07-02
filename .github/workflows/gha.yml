@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Test Action?
-        uses: nhendri/test-docker-action
+        uses: nhendri/test-docker-action@main
         with:
             var01: "holy"
             var02: "wah"
