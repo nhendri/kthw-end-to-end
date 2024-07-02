@@ -17,5 +17,5 @@ jobs:
       - name: Test Action?
         uses: nhendri/test-docker-action@main
         with:
-            var01: "holy"
-            var02: "wah"
+          ENV_VAR01: "holy"
+          ENV_VAR02: "wah"
